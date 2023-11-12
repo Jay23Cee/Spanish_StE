@@ -1,0 +1,171 @@
+// Variables
+$green: #4caf50; // Primary color - green
+$white: #ffffff; // Primary color - white
+$accent-color1: #f44336; // Complementary color for accents - red
+$accent-color2: #2196f3; // Complementary color for accents - blue
+$mobile-width: 480px; // Mobile width threshold
+$tablet-width: 768px; // Tablet width threshold
+$laptop-width: 1024px; // Laptop width threshold
+
+// Base mobile styles
+.home-container {
+  font-family: 'Arial', sans-serif;
+  background-color: $white; // Set the background to white for all views
+  color: $green; // Use green as the text color for high contrast on white
+
+  .home-header,
+  .welcome-section,
+  .news-events {
+    padding: 20px;
+  }
+
+  .home-header {
+    background-color: $green; // Green header for a bold look
+    color: $white; // White text for contrast
+    h1 {
+      margin-bottom: 0.5em;
+    }
+    .flag {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  .welcome-section {
+    background-color: lighten($green, 30%); // Lighten green for the section
+    .dancer {
+      max-width: 100%;
+      height: auto;
+    }
+    .activity-links a {
+      color: $accent-color1; // Use accent color for links
+      &:hover {
+        color: $accent-color2; // Another accent color on hover
+      }
+    }
+  }
+
+  .news-events {
+    h2 {
+      color: $green; // Green color for headings
+    }
+  }
+}
+
+// Tablet styles
+@media (min-width: $tablet-width) {
+  .home-container {
+    .home-header {
+      text-align: left;
+      h1 {
+        font-size: 2.2em; // Larger text on tablet
+      }
+      .flag {
+        width: 150px; // Fixed width on tablet
+      }
+    }
+
+    .welcome-section,
+    .news-events {
+      padding: 40px; // More padding on larger screens
+    }
+
+    .welcome-section {
+      display: flex; // Use flexbox for side-by-side layout
+      flex-direction: row-reverse; // Put the image to the left
+      justify-content: space-between;
+      align-items: center;
+      .dancer {
+        flex: 0 1 50%; // Dancer takes up to 50% of the horizontal space
+      }
+      p {
+        flex: 1; // Paragraph takes the remaining space
+      }
+    }
+
+    .activity-links {
+      justify-content: space-between; // Space out links evenly
+      a {
+        margin-right: 20px; // Add margin to the right of links
+      }
+    }
+  }
+}
+
+// Laptop and desktop styles
+@media (min-width: $laptop-width) {
+  .home-container {
+    .home-header {
+      .flag {
+        width: 200px; // Larger flag for wider screens
+      }
+    }
+
+    .welcome-section {
+      flex-direction: row;
+      .dancer {
+        width: auto; // Auto width for responsive design
+        max-width: 300px; // Maximum width to ensure it's not too large
+      }
+    }
+
+    .activity-links {
+      flex-wrap: wrap; // Allow links to wrap if there are too many
+      a {
+        flex: 1 1 auto; // Links can grow and shrink as needed
+        min-width: 150px; // Minimum width for links
+      }
+    }
+
+    .news-events {
+      h2 {
+        font-size: 2em; // Larger font size for desktop
+      }
+    }
+  }
+}
+
+
+// Add this at the bottom of your SASS file
+.image-gallery {
+    margin-top: 40px;
+    h2 {
+      text-align: center;
+      color: $green;
+      margin-bottom: 20px;
+    }
+    .gallery-images {
+      display: flex;
+      justify-content: space-around; // This will space your images evenly
+      flex-wrap: wrap; // Allows images to wrap to the next line on smaller screens
+  
+      img {
+        max-width: 100%; // Makes images responsive
+        height: auto; // Maintain aspect ratio
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Adds a subtle shadow for depth
+        transition: transform 0.3s ease; // Smooth transition for hover effect
+        
+        &:hover {
+          transform: scale(1.05); // Scales up the image slightly on hover
+        }
+      }
+    }
+  }
+  
+  @media (min-width: $tablet-width) {
+    // Adjust styles for tablet
+    .image-gallery .gallery-images img {
+      width: 48%; // Two images per row on tablet
+      margin: 1%; // Adds a little space around images
+    }
+  }
+  
+  @media (min-width: $laptop-width) {
+    // Adjust styles for laptop/desktop
+    .image-gallery .gallery-images img {
+      width: 31%; // Three images per row on desktop
+      margin: 1%; // Adds a little space around images
+    }
+  }
+  
